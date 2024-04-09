@@ -22,7 +22,7 @@ class SubCategoryController extends Controller
             'subcategory_name' => 'required',
             'category_id' => 'required'
         ],[
-            'subcategory_name.required' => 'Input SubCategory English Name required',
+            'subcategory_name.required' => 'Input SubCategory Name required',
         ]);
 
 
@@ -75,6 +75,11 @@ class SubCategoryController extends Controller
         );
 
         return redirect()->route('all.subcategory')->with($notification);
+    }
+
+    public function GetSubCategory($category_id){
+        $subcategory = SubCategory::where('category_id',$category_id)->orderBy('subcategory_name','ASC')->get();
+        return json_encode($subcategory);
     }
 
 }

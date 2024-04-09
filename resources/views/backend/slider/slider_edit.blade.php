@@ -17,36 +17,37 @@
 
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Edit Category</h3>
+                        <h3 class="box-title">Edit Brand</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="table-responsive">
-                            <form method="POST" action="{{ route('category.update') }}" >
+                            <form method="POST" action="{{ route('slider.update') }}" enctype="multipart/form-data">
                                 @csrf
 
-                                <input type="hidden" value="{{  $category->id}}" name="id">
+                                <input type="hidden" value="{{  $slider->id}}" name="id">
+                                <input type="hidden" name="old_image" value="{{ $slider->slider_img }}">
+
+
+
                                 <div class="form-group">
-                                    <h5>Category Name <span class="text-danger">*</span></h5>
+                                    <h5>Slider Image <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text" name="category_name" value="{{ $category->category_name }}" class="form-control" required=""
+                                        <input type="file" name="slider_img" class="form-control"
                                         >
-                                        @error('category_name_en')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
                                     </div>
+                                    <img src="{{ asset('storage/'.$slider->slider_img) }}" alt="">
                                 </div>
 
-
                                 <div class="form-group">
                                     <div class="controls">
+
                                         <fieldset>
-                                            <input type="checkbox" id="checkbox_4" value="1" name="showInTopNav" {{ $category->showInTopNav == 1?'checked':'' }}>
-                                            <label for="checkbox_4">Show In Top Nav</label>
+                                            <input type="checkbox" id="checkbox_4" value="1" name="status" {{ $slider->status == 1 ?'checked':''}}>
+                                            <label for="checkbox_4">Status</label>
                                         </fieldset>
                                     </div>
                                 </div>
-
 
 
 

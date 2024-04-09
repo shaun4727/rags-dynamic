@@ -20,6 +20,7 @@
                             <thead>
                                 <tr>
                                     <th>Category Name</th>
+                                    <th>Show In Top Nav</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -27,6 +28,13 @@
                                 @foreach ($categories as $category)
                                     <tr>
                                         <td>{{ $category->category_name }}</td>
+                                        <td>
+                                            @if($category->showInTopNav == 1)
+                                                    <span class="badge badge-pill badge-success">Active</span>
+                                            @else
+                                                <span class="badge badge-pill badge-danger">InActive</span>
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('category.edit', $category->id) }}" class="btn btn-info"> <i class="fa fa-pencil"></i> </a>
                                             <a href="{{ route('category.delete', $category->id) }}" id="delete-brand" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
@@ -66,6 +74,14 @@
                                     @error('category_name')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
+                                </div>
+                                <div class="form-group mt-2">
+                                    <div class="controls">
+                                        <fieldset>
+                                            <input type="checkbox" id="checkbox_4" value="1" name="showInTopNav" >
+                                            <label for="checkbox_4">Show In Top Nav</label>
+                                        </fieldset>
+                                    </div>
                                 </div>
                             </div>
 

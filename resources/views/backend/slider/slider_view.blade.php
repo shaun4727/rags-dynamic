@@ -14,7 +14,7 @@
 
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Sub Category List</h3>
+                        <h3 class="box-title">Brand List</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
@@ -22,19 +22,26 @@
                             <table id="example1" class="table table-bordered table-striped">
                                 <thead>
                                     <tr>
-                                        <th>Category</th>
-                                        <th>Subcategory</th>
+                                        <th>Slider Image</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($subcategories as $subcategory)
+                                    @foreach ($sliders as $slider)
                                         <tr>
-                                            <td>{{ $subcategory['category']['category_name'] }}</td>
-                                            <td>{{ $subcategory->subcategory_name }}</td>
+                                            <td><img src="{{ asset('storage/'.$slider->slider_img) }}" alt=""
+                                                    style="width:70px;height:40px;"></td>
                                             <td>
-                                                <a href="{{ route('subcategory.edit', $subcategory->id) }}" class="btn btn-info"> <i class="fa fa-pencil"></i> </a>
-                                                <a href="{{ route('subcategory.delete', $subcategory->id) }}" id="delete-brand" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
+                                                @if($slider->status == 1)
+                                                    <span class="badge badge-pill badge-success">Active</span>
+                                                @else
+                                                <span class="badge badge-pill badge-danger">InActive</span>
+                                                @endif
+                                            </td>
+                                            <td>
+                                                <a href="{{ route('slider.edit', $slider->id) }}" class="btn btn-info"> <i class="fa fa-pencil"></i> </a>
+                                                <a href="{{ route('slider.delete', $slider->id) }}" id="delete-brand" class="btn btn-danger"> <i class="fa fa-trash"></i> </a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -54,47 +61,35 @@
 
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Add Sub Category</h3>
+                        <h3 class="box-title">Add Slider</h3>
                     </div>
                     <!-- /.box-header -->
                     <div class="box-body">
                         <div class="table-responsive">
-                            <form method="POST" action="{{ route('subcategory.store') }}" >
+                            <form method="POST" action="{{ route('slider.store') }}" enctype="multipart/form-data">
                                 @csrf
 
 
-                                <div class="form-group">
-                                    <h5>Category Select <span class="text-danger">*</span></h5>
-                                    <div class="controls">
-                                        <select name="category_id" id="select" required="" class="form-control" >
-                                            <option value="" selected="" disabled>Select Category</option>
-                                            @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->category_name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
+
 
 
                                 <div class="form-group">
-                                    <h5>Subcategory Name<span class="text-danger">*</span></h5>
+                                    <h5>Slider Image <span class="text-danger">*</span></h5>
                                     <div class="controls">
-                                        <input type="text"  name="subcategory_name" class="form-control" required=""
+                                        <input type="file" name="slider_img" class="form-control" required=""
                                         >
-                                        @error('subcategory_name')
-                                        <span class="text-danger">{{ $message }}</span>
-                                        @enderror
                                     </div>
                                 </div>
 
+                                <div class="form-group">
+                                    <div class="controls">
 
-
-
-
-
-
-
-
+                                        <fieldset>
+                                            <input type="checkbox" id="checkbox_4" value="1" name="status" >
+                                            <label for="checkbox_4">Status</label>
+                                        </fieldset>
+                                    </div>
+                                </div>
                                 <div class="text-xs-right">
                                     <input type="submit" class="btn btn-rounded btn-info" value="Add">
                                 </div>

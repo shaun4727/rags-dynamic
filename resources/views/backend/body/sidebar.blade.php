@@ -38,6 +38,31 @@
             <li><a href="{{ route('all.subcategory') }}"><i class="ti-more"></i>All Subcategory</a></li>
           </ul>
         </li>
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Slider</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('manage.slider') }}"><i class="ti-more"></i>Manage Slider</a></li>
+          </ul>
+        </li>
+        <li class="treeview">
+          <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Product</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{ route('add.product') }}"><i class="ti-more"></i>Add Product</a></li>
+            <li><a href="{{ route('manage.product') }}"><i class="ti-more"></i>Manage Product</a></li>
+          </ul>
+        </li>
 
 
     </section>
