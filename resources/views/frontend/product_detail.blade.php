@@ -31,7 +31,7 @@
         </div>
         <div>
             <h3 class="text-xs tracking-widest mt-2">{{ $product['category']['category_name'] }}</h3>
-            <a class="font-bold cursor-pointer">{{ $product->product_name }}</a>
+            <a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug) }}" class="font-bold cursor-pointer">{{ $product->product_name }}</a>
         </div>
     </div>
     @endforeach

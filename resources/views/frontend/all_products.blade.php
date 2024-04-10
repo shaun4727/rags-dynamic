@@ -2,7 +2,7 @@
 @section('content')
 <!-- category starts -->
 <div class="cate flex flex-row justify-between mt-4 border-b-4 border-[#000]">
-    <h3 class="font-extrabold">{{ $catName1->category_name }}</h3>
+    <h3 class="font-extrabold">{{ $catName1->category_name??'Search Results' }}</h3>
 </div>
 <div class="flex flex-wrap mt-2 product ">
     <!-- all products starts -->
@@ -12,7 +12,7 @@
             <img src="{{ asset('storage/'.$product->thumbnail) }}" alt="">
         </div>
         <div>
-            <h3 class="text-xs tracking-widest mt-2">{{ $catName1->category_name }}</h3>
+            <h3 class="text-xs tracking-widest mt-2">{{ $product['category']['category_name'] }}</h3>
             <a href="{{ url('product/detail/'.$product->id.'/'.$product->product_slug) }}" class="font-bold cursor-pointer">{{ $product->product_name }}</a>
         </div>
     </div>

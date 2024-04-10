@@ -26,6 +26,7 @@ Route::post('/mail', [IndexController::class,'sendMail'])->name('send.mail');
 Route::get('/all/product/{id}/{slug}', [IndexController::class,'getAllProducts']);
 Route::get('/all/SubCategory/product/{id}/{slug}', [IndexController::class,'getAllSubProducts']);
 Route::get('/product/detail/{id}/{slug}', [IndexController::class,'getProductDetail']);
+Route::get('/search',[IndexController::class, 'searchProduct'])->name('product.search');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

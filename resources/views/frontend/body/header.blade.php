@@ -4,14 +4,14 @@ $categories = App\Models\backend\Category::latest()->get();
 
 @endphp
 
-
+<form method="get" action="{{ route('product.search') }}">
 <div class="flex min-[700px]:flex-row max-[699px]:flex-col max-[699px]:gap-4 mt-6">
     <div class="min-[700px]:basis-1/4">
         <h3 class="dancing-script-regular text-5xl">Eagle</h3>
         <h3 class="dancing-script-regular text-5xl">International</h3>
     </div>
     <div class="min-[700px]:basis-1/2  flex flex-row justify-start items-center ">
-        <input type="text" placeholder="Type here" class="input input-bordered rounded-none min-[700px]:w-[30vw]  " />
+        <input type="text" placeholder="Type here" class="input input-bordered rounded-none min-[700px]:w-[30vw]  " name="search"/>
         <button class="btn rounded-none "><span class="material-symbols-outlined max-[698px]:text-[20px]">
             search
             </span></button>
@@ -20,6 +20,7 @@ $categories = App\Models\backend\Category::latest()->get();
 
     </div>
 </div>
+</form>
 <div class="navbar flex flex-row justify-between bg-[#011c2a] min-h-2 max-[699px]:hidden mt-4">
     <div>
 
@@ -28,7 +29,7 @@ $categories = App\Models\backend\Category::latest()->get();
         <a href="{{ url('/') }}" class="text-[18px] text-white px-4 cursor-pointer">Home</a>
         @foreach($categories as $category)
         @if($category->showInTopNav == 1)
-        <a href="{{ url('all/product'.$category->id.'/'.$category->category_slug) }}" class="text-[18px] text-white px-4 cursor-pointer">{{ $category->category_name }}</a>
+        <a href="{{ url('all/product/'.$category->id.'/'.$category->category_slug) }}" class="text-[18px] text-white px-4 cursor-pointer">{{ $category->category_name }}</a>
         @endif
         @endforeach
     </div>

@@ -197,7 +197,7 @@
 .product img,.similar-product img{
     height:150px;
 }
-.product a:hover,.similar-product a:hover{
+.product a:hover,.similar-product a:hover, .dif-product a:hover{
     text-decoration:underline;
 }
 .description p{

@@ -56,4 +56,15 @@ class IndexController extends Controller
         $catName1 = Category::where('id',$subcategory->category_id)->first();
         return view('frontend.all_products',compact('products','catName1'));
     }
+
+    public function searchProduct(Request $request){
+        $search = $request->search;
+        $products = Product::where(function($query) use ($search){
+            $query->where('product_name','like',"%$search%");
+        })->where('status',1)->orderBy('id','DESC')->paginate(10);
+
+
+
+        return view('frontend.all_products',compact('products'));
+    }
 }
