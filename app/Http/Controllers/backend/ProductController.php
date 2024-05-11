@@ -38,7 +38,7 @@ class ProductController extends Controller
 
         $manager = new ImageManager(Driver::class);
         $imageInt = $manager->read($request->file('product_thumbnail'));
-        $conImg = $imageInt->cover(970, 300);
+        $conImg = $imageInt->scale(970, 300);
         Storage::put('public/upload/product/'.$name_gen,$conImg->encode());
 
 

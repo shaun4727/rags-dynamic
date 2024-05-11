@@ -21,6 +21,8 @@
                                 <tr>
                                     <th>Category Name</th>
                                     <th>Show In Top Nav</th>
+                                    <th>Show In Home Page</th>
+                                    <th>Position</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -33,6 +35,22 @@
                                                     <span class="badge badge-pill badge-success">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-danger">InActive</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($category->showInHome == 1)
+                                                    <span class="badge badge-pill badge-success">Yes</span>
+                                            @else
+                                                <span class="badge badge-pill badge-danger">No</span>
+                                            @endif
+                                        </td>
+                                        <td>
+                                            @if($category->position == 1)
+                                                    <span class="badge badge-pill badge-success">First</span>
+                                            @elseif($category->position == 2)
+                                                <span class="badge badge-pill badge-success">Second</span>
+                                            @else
+                                                <span class="badge badge-pill badge-success">No Position</span>
                                             @endif
                                         </td>
                                         <td>
@@ -78,10 +96,28 @@
                                 <div class="form-group mt-2">
                                     <div class="controls">
                                         <fieldset>
-                                            <input type="checkbox" id="checkbox_4" value="1" name="showInTopNav" >
-                                            <label for="checkbox_4">Show In Top Nav</label>
+                                            <input type="checkbox" id="checkbox_1" value="1" name="showInTopNav" >
+                                            <label for="checkbox_1">Show In Top Nav</label>
                                         </fieldset>
                                     </div>
+                                </div>
+                                @if($positionTracker->positionAvailable != 0)
+                                <div class="form-group mt-2">
+                                    <div class="controls">
+                                        <fieldset>
+                                            <input type="checkbox" id="checkbox_2" value="1" name="showInHome" >
+                                            <label for="checkbox_2">Show In Home Page</label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="form-group mt-2">
+                                    <h5 class="my-10">Select box</h5>
+                                    <select class="selectpicker" name="position">
+                                        <option value="">No Position</option>
+                                        <option value="1" {{ $positionTracker->bookedPosition === 'first'?'disabled':'' }}>First</option>
+                                        <option value="2" {{ $positionTracker->bookedPosition === 'second'?'disabled':'' }}>Second</option>
+                                    </select>
                                 </div>
                             </div>
 

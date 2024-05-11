@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('category_position_trackers', function (Blueprint $table) {
             $table->id();
+            $table->string('bookedPosition')->nullable();
+            $table->integer('positionAvailable')->default(1);
             $table->timestamps();
-            $table->string('category_name')->nullable();
-            $table->integer('showInTopNav')->default(0);
-            $table->integer('showInHome')->default(0);
-            $table->integer('position')->default(0);
-            $table->string('category_slug')->nullable();
         });
     }
 
@@ -27,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('category_position_trackers');
     }
 };

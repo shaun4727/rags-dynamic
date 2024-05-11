@@ -15,15 +15,14 @@ class IndexController extends Controller
 {
     public function index(){
         $sliders = Slider::where('status',1)->get();
+        $catName1 = Category::where('position',1)->first();
+        $catName2 = Category::where('position',2)->first();
 
-        $chemicals = Product::where('category_id',1)->take(5)->get();
-        $catName1 = Category::where('id',1)->first();
-        $catName2 = Category::where('id',2)->first();
-
-        $rags = Product::where('category_id',2)->take(5)->get();
+        $catFirst = Product::where('category_id',$catName1->id)->take(5)->get();
+        $catSecond = Product::where('category_id',$catName2->id)->take(5)->get();
 
 
-        return view('frontend.index',compact('sliders','chemicals','rags','catName1','catName2'));
+        return view('frontend.index',compact('sliders','catFirst','catSecond','catName1','catName2'));
     }
 
     public function sendMail(Request $request){

@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="{{ asset('backend/css/vendors_css.css') }}">
 
     <!-- Style-->
+
     <link rel="stylesheet" href="{{ asset('backend/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('backend/css/skin_color.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
@@ -75,6 +76,9 @@
     <script src="{{ asset('../assets/vendor_components/ckeditor/ckeditor.js') }}"></script>
 	<script src="{{ asset('../assets/vendor_plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.js') }}"></script>
 	<script src="{{ asset('backend/js/pages/editor.js') }}"></script>
+    <script src="{{ asset('backend/js/pages/advanced-form-element.js') }}"></script>
+
+    <script src="{{ asset('../assets/vendor_components/bootstrap-select/dist/js/bootstrap-select.js') }}"></script>
     {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> --}}
 
 

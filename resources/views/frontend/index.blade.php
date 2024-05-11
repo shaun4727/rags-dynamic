@@ -24,13 +24,13 @@
 <div class="cat-detail flex min-[1000px]:flex-row max-[999px]:flex-col my-4">
     <div class="min-[1000px]:basis-1/2 min-[1000px]:border-r-2 min-[1000px]:border-[#000] min-[1000px]:border-dotted ">
         <div class="py-6 border-b-2 border-[#000]  min-[1000px]:w-[80%] border-dotted flex flex-row dif-product">
-            @if(isset($chemicals[0]))
+            @if(isset($catFirst[0]))
             <div class=" border-4 border-[#000] mr-2 overflow-hidden ">
-                <img src="{{ asset('storage/'.($chemicals[0]->thumbnail??'')) }}" alt="">
+                <img src="{{ asset('storage/'.($catFirst[0]->thumbnail??'')) }}" alt="">
             </div>
             <div>
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName1->category_name ?? '' }}</h3>
-                <a href="{{ url('product/detail/'.($chemicals[0]->id??0).'/'.($chemicals[0]->product_slug??'')) }}" class="font-bold">{{ $chemicals[0]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catFirst[0]->id??0).'/'.($catFirst[0]->product_slug??'')) }}" class="font-bold">{{ $catFirst[0]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -38,13 +38,13 @@
 
         </div>
         <div class="py-6 min-[1000px]:w-[80%] flex flex-row-reverse max-[999px]:border-b-2 max-[999px]:border-[#000] max-[999px]:border-dotted dif-product">
-            @if(isset($chemicals[1]))
+            @if(isset($catFirst[1]))
             <div class=" border-4 w-[55%] min-[1000px]:mr-2 border-[#000] overflow-hidden">
-                <img class="narrow" src="{{ asset('storage/'.($chemicals[1]->thumbnail??'')) }}" alt="">
+                <img class="narrow" src="{{ asset('storage/'.($catFirst[1]->thumbnail??'')) }}" alt="">
             </div>
             <div class="min-[999px]:mr-2">
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName1->category_name??'' }}</h3>
-                <a href="{{ url('product/detail/'.($chemicals[1]->id??'').'/'.($chemicals[1]->product_slug??0)) }}" class="font-bold">{{ $chemicals[1]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catFirst[1]->id??'').'/'.($catFirst[1]->product_slug??0)) }}" class="font-bold">{{ $catFirst[1]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -54,13 +54,13 @@
     </div>
     <div class="min-[1000px]:basis-1/2">
         <div class="py-6 min-[1000px]:w-[80%] border-b-2 border-[#000] border-dotted flex flex-row min-[1000px]:ml-[20%] dif-product">
-            @if(isset($chemicals[2]))
+            @if(isset($catFirst[2]))
             <div class=" border-4 w-[55%] mr-2 border-[#000] overflow-hidden">
-                <img class="narrow" src="{{ asset('storage/'.($chemicals[2]->thumbnail??'')) }}" alt="">
+                <img class="narrow" src="{{ asset('storage/'.($catFirst[2]->thumbnail??'')) }}" alt="">
             </div>
             <div>
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName1->category_name??''}}</h3>
-                <a href="{{ url('product/detail/'.($chemicals[2]->id??'').'/'.($chemicals[2]->product_slug??'')) }}" class="font-bold">{{ $chemicals[2]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catFirst[2]->id??'').'/'.($catFirst[2]->product_slug??'')) }}" class="font-bold">{{ $catFirst[2]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -68,13 +68,13 @@
 
         </div>
         <div class="py-6 min-[1000px]:w-[80%] border-b-2 border-[#000] border-dotted flex flex-row min-[1000px]:ml-[20%] dif-product">
-            @if(isset($chemicals[3]))
+            @if(isset($catFirst[3]))
             <div class="mr-2">
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName1->category_name ??''}}</h3>
-                <a href="{{ url('product/detail/'.($chemicals[3]->id??'').'/'.($chemicals[3]->product_slug??'')) }}" class="font-bold">{{ $chemicals[3]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catFirst[3]->id??'').'/'.($catFirst[3]->product_slug??'')) }}" class="font-bold">{{ $catFirst[3]->product_name??'' }}</a>
             </div>
             <div class=" border-4 w-[55%] mr-2 border-[#000] overflow-hidden">
-                <img class="narrow" src="{{ asset('storage/'.($chemicals[3]->thumbnail??'')) }}" alt="">
+                <img class="narrow" src="{{ asset('storage/'.($catFirst[3]->thumbnail??'')) }}" alt="">
             </div>
             @else
             <h1>No Content Available</h1>
@@ -82,13 +82,13 @@
 
         </div>
         <div class="py-6 min-[1000px]:w-[80%] min-[1000px]:ml-[20%] flex flex-row dif-product">
-            @if(isset($chemicals[4]))
+            @if(isset($catFirst[4]))
             <div class=" border-4 border-[#000] mr-2 overflow-hidden">
-                <img src="{{ asset('storage/'.($chemicals[4]->thumbnail??'')) }}" alt="">
+                <img src="{{ asset('storage/'.($catFirst[4]->thumbnail??'')) }}" alt="">
             </div>
             <div>
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName1->category_name ??''}}</h3>
-                <a href="{{ url('product/detail/'.($chemicals[4]->id??'').'/'.($chemicals[4]->product_slug??'')) }}" class="font-bold">{{ $chemicals[4]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catFirst[4]->id??'').'/'.($catFirst[4]->product_slug??'')) }}" class="font-bold">{{ $catFirst[4]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -108,13 +108,13 @@
 <div class="cat-detail flex min-[1000px]:flex-row max-[999px]:flex-col my-4">
     <div class="min-[1000px]:basis-1/2 min-[1000px]:border-r-2 min-[1000px]:border-[#000] min-[1000px]:border-dotted dif-product">
         <div class="py-6 border-b-2 border-[#000]  min-[1000px]:w-[80%] border-dotted flex flex-row">
-            @if(isset($rags[0]))
+            @if(isset($catSecond[0]))
             <div class=" border-4 border-[#000] mr-2 overflow-hidden">
-                <img src="{{ asset('storage/'.($rags[0]->thumbnail??'')) }}" alt="">
+                <img src="{{ asset('storage/'.($catSecond[0]->thumbnail??'')) }}" alt="">
             </div>
             <div>
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName2->category_name ?? '' }}</h3>
-                <a href="{{ url('product/detail/'.($rags[0]->id??'').'/'.($rags[0]->product_slug??'')) }}" class="font-bold">{{ $rags[0]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catSecond[0]->id??'').'/'.($catSecond[0]->product_slug??'')) }}" class="font-bold">{{ $catSecond[0]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -122,13 +122,13 @@
 
         </div>
         <div class="py-6 min-[1000px]:w-[80%] flex flex-row-reverse max-[999px]:border-b-2 max-[999px]:border-[#000] max-[999px]:border-dotted dif-product">
-            @if(isset($rags[1]))
+            @if(isset($catSecond[1]))
             <div class=" border-4 w-[55%] min-[1000px]:mr-2 border-[#000] overflow-hidden">
-                <img class="narrow" src="{{ asset('storage/'.($rags[1]->thumbnail??'')) }}" alt="">
+                <img class="narrow" src="{{ asset('storage/'.($catSecond[1]->thumbnail??'')) }}" alt="">
             </div>
             <div class="min-[999px]:mr-2">
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName2->category_name ?? '' }}</h3>
-                <a href="{{ url('product/detail/'.($rags[1]->id??'').'/'.($rags[1]->product_slug??'')) }}" class="font-bold">{{ $rags[1]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catSecond[1]->id??'').'/'.($catSecond[1]->product_slug??'')) }}" class="font-bold">{{ $catSecond[1]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -138,13 +138,13 @@
     </div>
     <div class="min-[1000px]:basis-1/2">
         <div class="py-6 min-[1000px]:w-[80%] border-b-2 border-[#000] border-dotted flex flex-row min-[1000px]:ml-[20%] dif-product">
-            @if(isset($rags[2]))
+            @if(isset($catSecond[2]))
             <div class=" border-4 w-[55%] mr-2 border-[#000] overflow-hidden">
-                <img class="narrow" src="{{ asset('storage/'.($rags[2]->thumbnail??'')) }}" alt="">
+                <img class="narrow" src="{{ asset('storage/'.($catSecond[2]->thumbnail??'')) }}" alt="">
             </div>
             <div>
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName2->category_name ?? '' }}</h3>
-                <a href="{{ url('product/detail/'.($rags[2]->id??'').'/'.($rags[2]->product_slug??'')) }}" class="font-bold">{{ $rags[2]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catSecond[2]->id??'').'/'.($catSecond[2]->product_slug??'')) }}" class="font-bold">{{ $catSecond[2]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>
@@ -152,13 +152,13 @@
 
         </div>
         <div class="py-6 min-[1000px]:w-[80%] border-b-2 border-[#000] border-dotted flex flex-row min-[1000px]:ml-[20%] dif-product">
-            @if(isset($rags[3]))
+            @if(isset($catSecond[3]))
             <div class="mr-2">
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName2->category_name?? '' }}</h3>
-                <a href="{{ url('product/detail/'.($rags[3]->id??'').'/'.($rags[3]->product_slug??'')) }}" class="font-bold">{{ $rags[3]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catSecond[3]->id??'').'/'.($catSecond[3]->product_slug??'')) }}" class="font-bold">{{ $catSecond[3]->product_name??'' }}</a>
             </div>
             <div class=" border-4 w-[55%] mr-2 border-[#000] overflow-hidden">
-                <img class="narrow" src="{{ asset('storage/'.($rags[3]->thumbnail??'')) }}" alt="">
+                <img class="narrow" src="{{ asset('storage/'.($catSecond[3]->thumbnail??'')) }}" alt="">
             </div>
             @else
             <h1>No Content Available</h1>
@@ -166,13 +166,13 @@
 
         </div>
         <div class="py-6 min-[1000px]:w-[80%] min-[1000px]:ml-[20%] flex flex-row dif-product">
-            @if(isset($rags[4]))
+            @if(isset($catSecond[4]))
             <div class=" border-4 border-[#000] mr-2 overflow-hidden">
-                <img src="{{ asset('storage/'.($rags[4]->thumbnail??'')) }}" alt="">
+                <img src="{{ asset('storage/'.($catSecond[4]->thumbnail??'')) }}" alt="">
             </div>
             <div>
                 <h3 class="text-xs tracking-widest mt-2">{{ $catName2->category_name ?? '' }}</h3>
-                <a href="{{ url('product/detail/'.($rags[0]->id??'').'/'.($rags[0]->product_slug??'')) }}" class="font-bold">{{ $rags[4]->product_name??'' }}</a>
+                <a href="{{ url('product/detail/'.($catSecond[0]->id??'').'/'.($catSecond[0]->product_slug??'')) }}" class="font-bold">{{ $catSecond[4]->product_name??'' }}</a>
             </div>
             @else
             <h1>No Content Available</h1>

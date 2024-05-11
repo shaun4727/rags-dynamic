@@ -41,13 +41,29 @@
                                 <div class="form-group">
                                     <div class="controls">
                                         <fieldset>
-                                            <input type="checkbox" id="checkbox_4" value="1" name="showInTopNav" {{ $category->showInTopNav == 1?'checked':'' }}>
-                                            <label for="checkbox_4">Show In Top Nav</label>
+                                            <input type="checkbox" id="checkbox_1" value="1" name="showInTopNav" {{ $category->showInTopNav == 1?'checked':'' }}>
+                                            <label for="checkbox_1">Show In Top Nav</label>
                                         </fieldset>
                                     </div>
                                 </div>
-
-
+                                @if($positionTracker->positionAvailable != 0)
+                                <div class="form-group mt-2">
+                                    <div class="controls">
+                                        <fieldset>
+                                            <input type="checkbox" id="checkbox_2" value="1" name="showInHome" {{ $category->showInHome == 1?'checked':'' }} >
+                                            <label for="checkbox_2">Show In Home Page</label>
+                                        </fieldset>
+                                    </div>
+                                </div>
+                                @endif
+                                <div class="form-group mt-2">
+                                    <h5 class="my-10">Select box</h5>
+                                    <select class="selectpicker" name="position">
+                                        <option value="" {{ $category->position == 0?'selected':'' }}>No Position</option>
+                                        <option value="1" {{ $category->position == 1?'selected':'' }} {{ $positionTracker->bookedPosition === 'first'?'disabled':'' }}>First</option>
+                                        <option value="2" {{ $category->position == 2?'selected':'' }} {{ $positionTracker->bookedPosition === 'second'?'disabled':'' }}>Second</option>
+                                    </select>
+                                </div>
 
 
                                 <div class="text-xs-right">
