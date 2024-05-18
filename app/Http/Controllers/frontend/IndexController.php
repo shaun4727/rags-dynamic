@@ -18,8 +18,14 @@ class IndexController extends Controller
         $catName1 = Category::where('position',1)->first();
         $catName2 = Category::where('position',2)->first();
 
-        $catFirst = Product::where('category_id',$catName1->id)->take(5)->get();
-        $catSecond = Product::where('category_id',$catName2->id)->take(5)->get();
+        $catFirst = [];
+        $catSecond = [];
+        if($catName1){
+            $catFirst = Product::where('category_id',$catName1->id)->take(5)->get();
+        }
+        if($catName2){
+            $catSecond = Product::where('category_id',$catName2->id)->take(5)->get();
+        }
 
 
         return view('frontend.index',compact('sliders','catFirst','catSecond','catName1','catName2'));

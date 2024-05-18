@@ -101,7 +101,26 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                @if($positionTracker->positionAvailable != 0)
+                                @if($positionTracker )
+                                    @if($positionTracker->positionAvailable != 0)
+                                    <div class="form-group mt-2">
+                                        <div class="controls">
+                                            <fieldset>
+                                                <input type="checkbox" id="checkbox_2" value="1" name="showInHome" >
+                                                <label for="checkbox_2">Show In Home Page</label>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <h5 class="my-10">Select box</h5>
+                                        <select class="selectpicker" name="position">
+                                            <option value="">No Position</option>
+                                            <option value="1" {{ $positionTracker->bookedPosition === 'first'?'disabled':'' }}>First</option>
+                                            <option value="2" {{ $positionTracker->bookedPosition === 'second'?'disabled':'' }}>Second</option>
+                                        </select>
+                                    </div>
+                                    @endif
+                                @else
                                 <div class="form-group mt-2">
                                     <div class="controls">
                                         <fieldset>
@@ -110,15 +129,16 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                @endif
                                 <div class="form-group mt-2">
                                     <h5 class="my-10">Select box</h5>
                                     <select class="selectpicker" name="position">
                                         <option value="">No Position</option>
-                                        <option value="1" {{ $positionTracker->bookedPosition === 'first'?'disabled':'' }}>First</option>
-                                        <option value="2" {{ $positionTracker->bookedPosition === 'second'?'disabled':'' }}>Second</option>
+                                        <option value="1">First</option>
+                                        <option value="2">Second</option>
                                     </select>
                                 </div>
+                                @endif
+
                             </div>
 
 

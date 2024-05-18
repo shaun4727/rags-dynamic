@@ -36,10 +36,27 @@ class CategoryController extends Controller
 
 
         if($request->position){
-            CategoryPositionTracker::insert([
-                'bookedPosition' => $request->position == 1?'first':'second',
-                'positionAvailable' => $positionTracker?0:1,
-            ]);
+            if(isset($positionTracker)){
+                if($positionTracker->bookedPosition == ''){
+                    CategoryPositionTracker::findOrFail($positionTracker->id)->update([
+                        'bookedPosition' => $request->position == 1?'first':'second',
+                        'positionAvailable' => 1,
+                    ]);
+
+                }else{
+                    CategoryPositionTracker::findOrFail($positionTracker->id)->update([
+                        'bookedPosition' => 'both',
+                        'positionAvailable' => 0,
+                    ]);
+                }
+
+            }else{
+                CategoryPositionTracker::insert([
+                    'bookedPosition' => $request->position == 1?'first':'second',
+                    'positionAvailable' => 1,
+                ]);
+            }
+
         }
 
 
@@ -60,15 +77,68 @@ class CategoryController extends Controller
     }
 
     public function CategoryUpdate(Request $request){
-        $category_id = $request->id;
+        $category = Category::findOrFail($request->id);
+        $positionTracker = CategoryPositionTracker::first();
 
-        Category::findOrFail($category_id)->update([
+
+        //if category does not need to show in home page, it should not have any position
+        //hence updated position made 0
+
+        $category->update([
             'category_name' => $request->category_name,
             'showInTopNav' => $request->showInTopNav?1:0,
             'showInHome' => $request->showInHome?1:0,
-            'position' => $request->position?$request->position:0,
+            'position' => $request->showInHome == 1?$request->position:0,
             'category_slug' => strtolower(str_replace(' ','-',$request->category_name)),
         ]);
+        $availableHomeCategory = Category::where('showInHome',1)->get();
+        if($request->showInHome == 1){
+
+            if(isset($positionTracker)){
+                if($positionTracker->bookedPosition == ''){
+                    CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                        'bookedPosition' => $request->position == 1?'first':'second',
+                        'positionAvailable' => 1,
+                    ]);
+                }else if($positionTracker->bookedPosition == 'first' || $positionTracker->bookedPosition == 'second'){
+                    if(count($availableHomeCategory) == 2){
+                        CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                            'bookedPosition' => 'both',
+                            'positionAvailable' => 0,
+                        ]);
+                    }else{
+                        CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                            'bookedPosition' => $request->position == 1?'first':'second',
+                            'positionAvailable' => 1,
+                        ]);
+                    }
+
+                }
+            }else{
+                CategoryPositionTracker::insert([
+                    'bookedPosition' => $request->position == 1?'first':'second',
+                    'positionAvailable' => 1,
+                ]);
+            }
+
+        }else{
+            if(isset($positionTracker)){
+                if($positionTracker->bookedPosition == 'both'){
+                    $tempPosition = $availableHomeCategory[0]->position == 1?'first':'second';
+                    CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                        'bookedPosition' => $tempPosition,
+                        'positionAvailable' => 1,
+                    ]);
+                }else if(count($availableHomeCategory) == 0){
+                    CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                        'bookedPosition' => '',
+                        'positionAvailable' => 2,
+                    ]);
+                }
+
+            }
+        }
+
 
 
         $notification = array(
@@ -80,7 +150,22 @@ class CategoryController extends Controller
     }
 
     public function CategoryDelete($id){
+        $positionTracker = CategoryPositionTracker::first();
         $category = Category::findOrFail($id);
+        if($category && $category->position){
+            if($positionTracker->bookedPosition == 'both'){
+                CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                    'bookedPosition' => $category->position == 1?'second':'first',
+                    'positionAvailable' => 1,
+                ]);
+            }else{
+                CategoryPositionTracker::findOrFail(CategoryPositionTracker::first()->id)->update([
+                    'bookedPosition' => '',
+                    'positionAvailable' => 2,
+                ]);
+            }
+
+        }
 
         Category::findOrFail($id)->delete();
         $notification = array(

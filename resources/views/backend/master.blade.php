@@ -9,7 +9,7 @@
     <meta name="author" content="">
     <link rel="icon" href="../images/favicon.ico">
 
-    <title>Flipmart - Dashboard</title>
+    <title>Dashboard</title>
 
     <!-- Vendors Style-->
 

@@ -46,7 +46,7 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                @if($positionTracker->positionAvailable != 0)
+                                @if($category->position || $positionTracker->positionAvailable != 0)
                                 <div class="form-group mt-2">
                                     <div class="controls">
                                         <fieldset>
@@ -55,15 +55,16 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                @endif
                                 <div class="form-group mt-2">
                                     <h5 class="my-10">Select box</h5>
                                     <select class="selectpicker" name="position">
                                         <option value="" {{ $category->position == 0?'selected':'' }}>No Position</option>
-                                        <option value="1" {{ $category->position == 1?'selected':'' }} {{ $positionTracker->bookedPosition === 'first'?'disabled':'' }}>First</option>
-                                        <option value="2" {{ $category->position == 2?'selected':'' }} {{ $positionTracker->bookedPosition === 'second'?'disabled':'' }}>Second</option>
+                                        <option value="1" {{ $category->position == 1?'selected':'' }}>First</option>
+                                        <option value="2" {{ $category->position == 2?'selected':'' }}>Second</option>
                                     </select>
                                 </div>
+                                @endif
+
 
 
                                 <div class="text-xs-right">
