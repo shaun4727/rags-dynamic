@@ -46,7 +46,26 @@
                                         </fieldset>
                                     </div>
                                 </div>
-                                @if($category->position || $positionTracker->positionAvailable != 0)
+                                @if($positionTracker)
+                                    @if($category->position || $positionTracker->positionAvailable != 0)
+                                    <div class="form-group mt-2">
+                                        <div class="controls">
+                                            <fieldset>
+                                                <input type="checkbox" id="checkbox_2" value="1" name="showInHome" {{ $category->showInHome == 1?'checked':'' }} >
+                                                <label for="checkbox_2">Show In Home Page</label>
+                                            </fieldset>
+                                        </div>
+                                    </div>
+                                    <div class="form-group mt-2">
+                                        <h5 class="my-10">Select box</h5>
+                                        <select class="selectpicker" name="position">
+                                            <option value="" {{ $category->position == 0?'selected':'' }}>No Position</option>
+                                            <option value="1" {{ $category->position == 1?'selected':'' }}>First</option>
+                                            <option value="2" {{ $category->position == 2?'selected':'' }}>Second</option>
+                                        </select>
+                                    </div>
+                                    @endif
+                                @else
                                 <div class="form-group mt-2">
                                     <div class="controls">
                                         <fieldset>
